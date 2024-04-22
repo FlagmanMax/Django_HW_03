@@ -1,0 +1,59 @@
+{% extends 'app_03_shop/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<h3>Клиент</h3>
+  <table>
+    <tr>
+        <td>Клиент</td>
+        <td>email</td>
+    </tr>
+
+    <div class="list">
+    <tr>
+        <td>
+            {{client.name}}
+        </td>
+        <td>{{client.email}}</td>
+    </tr>
+    </div>
+  </table>
+<br>
+
+<h3>Список товаров, заказанных {{client.name}}</h3>
+<table>
+    <tr>
+        <td>id</td>
+        <td>Дата заказа</td>
+        <td>Описание</td>
+        <td>Цена</td>
+    </tr>
+    {% for item,date in items %}
+    <div class="list">
+    <tr>
+        <td>
+            {{item.id}}
+        </td>
+        <td>
+            {{date}}
+        </td>
+        <td>
+            {{item.description}}
+        </td>
+        <td>
+            {{item.price}}
+        </td>
+
+    </tr>
+    {% empty %}
+      <td>Заказов не найдено</td>
+      <td> --- </td>
+      <td> --- </td>
+    {% endfor %}
+    </div>
+</table>
+
+{% endblock %}

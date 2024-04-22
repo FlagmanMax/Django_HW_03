@@ -1,0 +1,44 @@
+{% extends 'app_01/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+  <h1>Article</h1>
+    <h3>{{article.title}}</h3>
+    <h3>{{article.content}}</h3>
+  <h1>Comments</h1>
+  {% for comment in comments %}
+    <p>{{ comment.author}}</p>
+    <p>{{ comment.content}}</p>
+    {% if comment.updated != comment.published %}
+      <p> Изменено: {{ comment.updated }}</p>
+    {% else %}
+      <p> Создано: {{ comment.published }}</p>
+    {% endif %}
+  {% endfor%}
+
+
+
+  <table>
+    <tr>
+        <td>Название статьи</td>
+        <td>Количество просмотров</td>
+        <td>Текст</td>
+        <td>Управление</td>
+    </tr>
+
+    <div class="authors_list">
+        <tr>
+            <td>
+                {{article.title}}
+            </td>
+            <td>{{article.show_count}}</td>
+            <td>{{article.content}}</td>
+            <td><a href="/delete_articles/{{article.id}}">удалить</a></td>
+        </tr>
+    </div>
+  </table>
+
+{% endblock %}

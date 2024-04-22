@@ -1,0 +1,31 @@
+{% extends 'app_01/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+  <table>
+    <tr>
+        <td>Фамилия Имя</td>
+        <td>email</td>
+    </tr>
+    {% for item in authors %}
+        <div class="authors_list">
+            <tr>
+                <td><a href="../view_all_articles_by_author/{{item.pk}}">{{item.l_name}} {{item.f_name}}</a></td>
+                <td>{{item.email}}</td>
+<!--                <td>{{item.show_count}}</td>-->
+<!--                <td><a href="/delete_articles/{{item.id}}">удалить</a></td>-->
+<!--                <td>-->
+<!--                </td>-->
+            </tr>
+        </div>
+    {% empty %}
+      <td>Авторов не найдено</td>
+      <td> --- </td>
+      <td> --- </td>
+    {% endfor %}
+  </table>
+
+{% endblock %}

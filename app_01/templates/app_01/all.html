@@ -1,0 +1,12 @@
+{% extends 'app_01/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <h1>Страница отображения результата игр: "{{ title }}"</h1>
+
+<h2>Орел и решка</h2><h3>{{ res_ht }}</h3>
+    <h2>Кости</h2><h3>{{ res_d }}</h3>
+    <h2>Рандом</h2><h3>{{ res_r }}</h3>
+
+{% endblock %}

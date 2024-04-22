@@ -1,0 +1,47 @@
+{% extends 'app_03_shop/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+  <table>
+    <tr>
+        <td>Клиент</td>
+        <td>email</td>
+        <td>телефон</td>
+        <td>Адрес</td>
+        <td>Дата регистрации</td>
+    </tr>
+    {% for item in clients %}
+        <div class="list">
+            <tr>
+                <td>
+                    <a href="../view_all_orders_by_client/{{item.pk}}/">
+                        {{item.name}}
+                    </a>
+                </td>
+                <td>
+                    {{ item.email }}
+                </td>
+                <td>
+                    {{ item.phone }}
+                </td>
+                <td>
+                    {{ item.address }}
+                </td>
+                <td>
+                    {{ item.registration_date }}
+                </td>
+
+
+            </tr>
+        </div>
+    {% empty %}
+      <td>Клиентов не найдено</td>
+      <td> --- </td>
+      <td> --- </td>
+    {% endfor %}
+  </table>
+
+{% endblock %}

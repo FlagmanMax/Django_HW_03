@@ -1,0 +1,59 @@
+{% extends 'app_01/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+  <table>
+    <tr>
+        <td>Название статьи</td>
+        <td>Количество просмотров</td>
+        <td>Текст</td>
+        <td>Управление</td>
+    </tr>
+
+    <div class="authors_list">
+    <tr>
+        <td>
+            {{article.title}}
+        </td>
+        <td>{{article.show_count}}</td>
+        <td>{{article.content}}</td>
+        <td><a href="/delete_articles/{{article.id}}">удалить</a></td>
+    </tr>
+    </div>
+  </table>
+
+<br>
+
+<table>
+    <tr>
+        <td>Дата комментария</td>
+        <td>Автор комментария</td>
+        <td>Комментарий</td>
+    </tr>
+    {% for item in comments %}
+    <div class="list">
+    <tr>
+        <td>
+            {% if item.updated != item.published %}
+              <p> Изменено: {{ item.updated }}</p>
+            {% else %}
+              <p> Создано: {{ item.published }}</p>
+            {% endif %}
+        </td>
+        <td>
+            {{item.author}}
+        </td>
+        <td>{{item.content}}</td>
+    </tr>
+    {% empty %}
+      <td>Комментариев не найдено</td>
+      <td> --- </td>
+      <td> --- </td>
+    {% endfor %}
+    </div>
+</table>
+
+{% endblock %}
